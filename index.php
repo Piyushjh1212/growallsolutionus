@@ -108,15 +108,9 @@
 
       <div class="product-grid">
         <!-- Product 1 -->
-        <div class="product-card">
-          <img src="./Image/Lmsimage.png" alt="Product 1" />
-          <h3>Learning Management System</h3>
-          <p>
-            A complete online platform for delivering, tracking, and managing
-            educational courses.
-          </p>
-          <a href="./products/businessclass.html" class="btn-primary">Get Started</a>
-        </div>
+       
+        <?php include './DisplayProducts.php'; ?>
+       
 
         <!-- Product 2 -->
         <div class="product-card">
