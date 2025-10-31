@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="Orders.css" />
+    <title>Book Your Order | Business Class</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        .order-page {
+            padding: 20px 20px;
+        }
+
+        .order-container {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Left Section (Order Info) */
+        .order-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+            background: linear-gradient(135deg, #1cb3dd, #066d84);
+            color: #fff;
+        }
+
+        .order-info h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #ffcc70;
+        }
+
+        .order-info p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #eee;
+        }
+
+        .order-info ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .order-info ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Right Section (Payment Form) */
+        .payment-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+        }
+
+        .payment-form h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 18px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #ff884b;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #ffcc70, #ff884b);
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #222;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.03);
+            background: linear-gradient(135deg, #ff884b, #ffcc70);
+        }
+
+        .payment-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .payment-logos img {
+            height: 32px;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+
+        .payment-logos img:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .order-container {
+                flex-direction: column;
+            }
+
+            .order-info,
+            .payment-form {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="https://res.cloudinary.com/dieboinjz/image/upload/v1739719838/mern-uploads/ejrkwcxdmqfjdxwyieo9.jpg"
+                        alt="image" height="60" width="60" />
+                    <h3 class="heading-Gac">
+                        Grow All Coaching — Education & IT Solutions
+                    </h3>
+                    <div class="navbar-icon" onclick="HandleIconClick()">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+                <ul id="menuList">
+                    <li><a href="#services">About</a></li>
+                    <li><a href="#about">Services</a></li>
+                    <li><a href="#about">Courses</a></li>
+                    <li><a href="#about">Investors</a></li>
+                    <li><a href="#about">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="order-page">
+        <div class="order-container">
+            <!-- Left Section -->
+            <div class="order-info">
+                <h2>Book Your Order</h2>
+                <p>Choose your desired package and complete your booking securely. We ensure quality and timely delivery
+                    for all business class services.</p>
+                <ul>
+                    <li>✔ Premium Quality Service</li>
+                    <li>✔ 24/7 Customer Support</li>
+                    <li>✔ Secure Online Payment</li>
+                    <li>✔ Quick Confirmation</li>
+                </ul>
+                <p>Need help? <br>📞 Call us: <b>+91 70246 18290</b></p>
+            </div>
+
+            <!-- Right Section -->
+            <div class="payment-form">
+                <h3>Payment & Details</h3>
+                <form id="orderForm">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+
+                    <label>Service / Package</label>
+                    <select id="service" required>
+                        <option value="">Select an option</option>
+                        <option value="Premium Package">Premium Package</option>
+                        <option value="Standard Package">Standard Package</option>
+                        <option value="Custom Order">Custom Order</option>
+                    </select>
+
+                    <!-- 🔽 Add these lines -->
+                    <label>Selected Product</label>
+                    <p id="productName">Loading...</p>
+
+                    <label>Amount</label>
+                    <p id="productPrice">Loading...</p>
+
+                    <button type="button" id="payBtn">Confirm & Pay</button>
+
+                    <div class="payment-logos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                            alt="MasterCard">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/PhonePe_Logo.svg/2560px-PhonePe_Logo.svg.png"
+                            alt="PhonePe Logo" width="200">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="./Razorpay.js"></script>
+
+</body>
+
+</html>
